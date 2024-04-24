@@ -1,9 +1,18 @@
 function getResponseFromAPI() {
     return new Promise((resolve, reject) => {
-        // Perform API request or any asynchronous operation here
-        // For simplicity, let's resolve with a dummy response after a timeout
+        // Simulating an asynchronous operation
         setTimeout(() => {
-            resolve("Dummy API response");
+            const randomValue = Math.random();
+            if (randomValue < 0.5) {
+                // Simulating a successful response
+                resolve({
+                    status: 200,
+                    body: "photo-profile-1"
+                });
+            } else {
+                // Simulating an error response
+                reject(new Error("API request failed"));
+            }
         }, 1000); // Simulating a delay of 1 second
     });
 }
