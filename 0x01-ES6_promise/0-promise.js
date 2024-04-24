@@ -1,20 +1,16 @@
-function getResponseFromAPI() {
+// Return a promise from a function
+export default function getResponseFromAPI() {
+    // Return a new promise
     return new Promise((resolve, reject) => {
-        // Simulating an asynchronous operation
+        // Do some asynchronous work
         setTimeout(() => {
-            const randomValue = Math.random();
-            if (randomValue < 0.5) {
-                // Simulating a successful response
-                resolve({
-                    status: 200,
-                    body: "photo-profile-1"
-                });
-            } else {
-                // Simulating an error response
-                reject(new Error("API request failed"));
+            try {
+                // Fulfill the promise with a value
+                resolve("Response from API");
+            } catch (error) {
+                // Reject the promise with a reason
+                reject(error);
             }
-        }, 1000); // Simulating a delay of 1 second
+        }, 1000);
     });
 }
-
-export default getResponseFromAPI;
