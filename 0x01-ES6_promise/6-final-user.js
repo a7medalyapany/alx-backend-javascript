@@ -1,14 +1,16 @@
-import { signUpUser } from './4-user-promise';
-import { uploadPhoto } from './5-photo-reject';
+import { uploadPhoto, createUser } from './utils';
 
-export default function handleProfileSignup(firstName, lastName, fileName) {
-  return Promise.allSettled([
-    signUpUser(firstName, lastName),
-    uploadPhoto(fileName),
-  ]).then((results) => {
-    return results.map((result) => ({
-      status: result.status,
-      value: result.status === 'fulfilled' ? result.value : result.reason,
-    }));
-  });
+export default function handleProfileSignup() {
+  const p1 = uploadPhoto();
+  const p2 = createUser();
+
+  return Promise.all([p1, p2])
+    .then((value) => {
+      console.log(
+        `${value[0].body} ${value[1].firstName} ${value[1].lastName}`,
+      );
+    })
+    .catch(() => {
+      console.log('Signup system offline');
+    });
 }
