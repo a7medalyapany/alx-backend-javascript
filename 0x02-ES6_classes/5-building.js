@@ -1,7 +1,7 @@
 export default class Building {
   constructor(sqft) {
     this._sqft = sqft;
-    console.log(this.#evacuationWarningMessage())
+    console.log(this.#evacuationWarningMessage());
   }
 
   get sqft() {
@@ -12,7 +12,7 @@ export default class Building {
     this._sqft = sqft;
   }
 
- #evacuationWarningMessage(){
-  return 'Hey There'
- }
+  #evacuationWarningMessage() {
+    return 'Hey There';
+  }
 }
